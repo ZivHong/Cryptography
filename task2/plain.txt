@@ -1,0 +1,18 @@
+The learning objective of this lab is for students to get familiar with the concepts in the secret-key encryption
+and some common attacks on encryption. From this lab, students will gain a first-hand experience on
+encryption algorithms, encryption modes, paddings, and initial vector (IV). Moreover, students will be able
+to use tools and write programs to encrypt/decrypt messages.
+Many common mistakes have been made by developers in using the encryption algorithms and modes.
+These mistakes weaken the strength of the encryption, and eventually lead to vulnerabilities. This lab
+exposes students to some of these mistakes, and ask students to launch attacks to exploit those vulnerabilities.
+This lab covers the following topics:
+• Secret-key encryption
+• Substitution cipher and frequency analysis
+• Encryption modes, IV, and paddings
+• Common mistakes in using encryption algorithms
+• Programming using the crypto library
+Readings. Detailed coverage of the secret-key encryption can be found in the following:
+• Chapter 21 of the SEED Book, Computer & Internet Security: A Hands-on Approach, 2nd Edition,
+by Wenliang Du. See details at https://www.handsonsecurity.net.
+Lab Environment. This lab has been tested on our pre-built Ubuntu 20.04 VM, which can be downloaded
+from the SEED website.
