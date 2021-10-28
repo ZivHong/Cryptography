@@ -9,6 +9,6 @@ done
 for i in 5 10 16 ;  do  
     head -c $i /dev/urandom > $i.txt
     openssl enc -e -aes-128-cbc -in $i.txt -out $i-cbc.txt -iter 1 -pass env:_pass
-    openssl enc -d -aes-128-cbc -in $i-cbc.txt -out $i-new.txt -iter 1 -pass env:_pass
-    rm -rf $i.txt
+    openssl enc -d -aes-128-cbc -in $i-cbc.txt -out $i-new.txt -iter 1 -pass env:_pass -nopad
+    rm -rf $i-cbc.txt
 done

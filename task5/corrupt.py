@@ -2,8 +2,6 @@ import sys
 
 fileName = sys.argv[1]
 out = sys.argv[2]
-# fileName = "1024-ofb.txt"
-# out = "test.txt"
 offset = 55
 def bitstring_to_bytes(s): # convert 0bxxxxx to bytes
     return int(s, 2).to_bytes((len(s) + 7) // 8, byteorder=sys.byteorder)
