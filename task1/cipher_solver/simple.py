@@ -35,22 +35,6 @@ class SimpleSolver:
     """
 
     def __init__(self, ciphertext):
-        """Create new solver.
-
-        Creates a new cipher solver from an initial ciphertext.
-
-        Parameters
-        ----------
-        ciphertext : str
-            The ciphertext to solve.
-
-        Raises
-        ------
-        ValueError
-            If the passed ciphertext is not a string.
-            If the passed ciphertext is empty.
-        """
-
         if not isinstance(ciphertext, str):
             raise ValueError(f"{ciphertext} is not a string.")
 
@@ -83,12 +67,6 @@ class SimpleSolver:
         -------
         decryption_key : list
             The initial decryption key.
-
-        Raises
-        ------
-        ValueError
-            If the passed ciphertext is not a string.
-            If the passed ciphertext is empty.
         """
 
         if not isinstance(ciphertext, str):
@@ -117,11 +95,6 @@ class SimpleSolver:
         -------
         common_letters : list
             The letters of the text ordered by frequency.
-
-        Raises
-        ------
-            If the passed text is not a string.
-            If the passed text is empty.
         """
 
         if not isinstance(text, str):
@@ -145,12 +118,6 @@ class SimpleSolver:
         -------
         digram_matrix : numpy.array
             An array of digram frequencies indexed by [first][second] letter.
-
-        Raises
-        ------
-        ValueError
-            If the passed text is not a string.
-            If the passed text does not contain at least one digram.
         """
 
         if not isinstance(text, str):
@@ -209,11 +176,6 @@ class SimpleSolver:
         -------
         score : float
             The distance sum of the two matrices.
-
-        Raises
-        ------
-        ValueError
-            If the passed matrices don't have the same number of rows and columns.
         """
 
         if matrix1.shape != matrix2.shape:
@@ -232,11 +194,6 @@ class SimpleSolver:
             The first index to swap between.
         index2 : int
             The second index to swap between.
-
-        Raises
-        ------
-        ValueError
-            If the passed matrix is not square.
         """
 
         rows, columns = matrix.shape
@@ -262,11 +219,6 @@ class SimpleSolver:
         -------
         plaintext : str
             Plaintext from decrypting the ciphertext using the passed decryption key.
-
-        Raises
-        ------
-        ValueError
-            If the passed decryption key does not contain all letters of the alphabet.
         """
 
         if len(set(decryption_key)) != STANDARD_ALPHABET_SIZE:
@@ -421,21 +373,6 @@ class SimpleSolver:
         self._decryption_key = key[:]
 
     def solve(self, method="random"):
-        """Solve the cipher.
-
-        Run the solver and save the resulting decryption key.
-
-        Parameters
-        ----------
-        method : str
-            The method to use when solving, currently "random" or "deterministic".
-
-        Raises
-        ------
-        ValueError
-            If the passed method is unknown.
-        """
-
         if method == "random":
             self._solve_random()
         elif method == "deterministic":
@@ -444,31 +381,11 @@ class SimpleSolver:
             raise ValueError(f"Unknown method {method}")
 
     def plaintext(self):
-        """Return a plaintext using the current decryption key.
-
-        Returns
-        -------
-        plaintext : str
-            Plaintext from decrypting the ciphertext using the current decryption key.
-        """
-
         return self._get_plaintext(self._decryption_key)
 
     def decryption_key(self):
-        """Return the current alphabetical decryption key.
-
-        Returns
-        -------
-        alphabetical_key : str
-            The current decryption key as a string in alphabetical form.
-        """
-
         return common_to_alphabetical_key(self._decryption_key)
 
     def reset(self):
-        """Reset the solver to its initial state.
-
-        Set the decryption key to its initial state, effectively starting over.
-        """
-
+        # Reset the solver to its initial state.
         self._decryption_key = self._get_initial_key(self._ciphertext)

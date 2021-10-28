@@ -14,6 +14,7 @@ output.write(fh.read(offset))
 fh.seek(offset)
 text = fh.read(1)
 bin_text = bin(int.from_bytes(text, byteorder=sys.byteorder))
+# modify the last bit (1->0, 0->1) of 55th byte
 s= list(bin_text)
 if bin_text[-1]=='1' : s[-1]='0'
 else: s[-1]='1'
