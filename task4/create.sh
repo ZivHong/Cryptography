@@ -1,10 +1,8 @@
 #!/bin/bash
-# all zero
-# truncate -s 5 5byte.txt
 export _pass=1234
-head -c 64 /dev/urandom > 64.txt
+head -c 30 /dev/urandom > 30.txt
 for j in cbc cfb ecb ofb; do  
-    openssl enc -e -aes-128-$j -in 64.txt -out 64-$j.txt -iter 1 -pass env:_pass
+    openssl enc -e -aes-128-$j -in 30.txt -out 30-$j.txt -iter 1 -pass env:_pass
 done
 for i in 5 10 16 ;  do  
     head -c $i /dev/urandom > $i.txt
